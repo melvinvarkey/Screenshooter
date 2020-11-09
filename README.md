@@ -1,4 +1,8 @@
+# Under-development DO NOT USE this program
+
 # Screenshooter
+
+# Author
 
 # What is OSINT? 
 
