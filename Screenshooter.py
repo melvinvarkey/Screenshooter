@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+#!/usr/bin/env python3
 '''
   ██████  ▄████▄   ██▀███  ▓█████ ▓█████  ███▄    █   ██████  ██░ ██  ▒█████   ▒█████  ▄▄▄█████▓▓█████  ██▀███  
 ▒██    ▒ ▒██▀ ▀█  ▓██ ▒ ██▒▓█   ▀ ▓█   ▀  ██ ▀█   █ ▒██    ▒ ▓██░ ██▒▒██▒  ██▒▒██▒  ██▒▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒
@@ -37,12 +39,13 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")  
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 chrome_options.add_argument("--log-level=OFF")
+chrome_options.add_argument('--ignore-certificate-errors')
+chrome_options.add_argument('--ignore-ssl-errors')
+
 
 # Sometimes, selenium randomly crashed when using seleniumwire, these options fixed that.
 # Probably has to do with how it proxies everything.
 # https://stackoverflow.com/questions/17361742/download-image-with-selenium-python
-# options.add_argument('--ignore-certificate-errors')
-# options.add_argument('--ignore-ssl-errors')
 
 chrome_options.binary_location = CHROME_PATH
 
@@ -66,8 +69,8 @@ args = parser.parse_args()
 def sleeperFunction():
     if args.sleep is not None:
             time.sleep(args.sleep)
-        else:
-            time.sleep(5)
+    else:
+        time.sleep(10)
 
 def screenshooter(URI):
     try:
@@ -75,7 +78,7 @@ def screenshooter(URI):
         tf = tempfile.NamedTemporaryFile()
         imgName = tf.name + ".png"
         print("[+] Screenshot Success | URL: {0} | Stored: {1}".format(URI, imgName))
-        driver.save_screenshot('args.output\\%s' % imgName) 
+        driver.save_screenshot(imgName) 
 
     except:
         print("[+] Error in URI format (expected HTTP / HTTPS)")

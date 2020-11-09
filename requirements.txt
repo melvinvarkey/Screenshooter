@@ -1,0 +1,9 @@
+requests
+argparse
+re
+time
+logging
+selenium
+webbrowser
+tempfile
+logging

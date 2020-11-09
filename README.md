@@ -1,8 +1,12 @@
-# Under-development DO NOT USE this program
-
 # Screenshooter
 
+# Introduction
+
 # Author
+
+# Features
+
+# How to use Screenshooter ? 
 
 # What is OSINT? 
 
