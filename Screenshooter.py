@@ -35,7 +35,7 @@ CHROME_PATH = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 CHROMEDRIVER_PATH = 'C:\\chromedriver_win32\\chromedriver.exe'
 WINDOW_SIZE = "1920,1080"
 
-chrome_options = Options()  
+chrome_options = webdriver.ChromeOptions()  
 chrome_options.add_argument("--headless")  
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 chrome_options.add_argument("--log-level=OFF")
@@ -76,9 +76,12 @@ def screenshooter(URI):
     try:
         driver.get(URI)
         tf = tempfile.NamedTemporaryFile()
-        imgName = tf.name + ".png"
-        print("[+] Screenshot Success | URL: {0} | Stored: {1}".format(URI, imgName))
-        driver.save_screenshot(imgName) 
+        print(URI)
+        imgName = URI + tf.name + ".png"
+        print(imgName)
+        print("[+] Screenshot Successful")
+        print("URL: {0} | Stored: {1}\n".format(URI, imgName))
+        driver.save_screenshot(imgName)
 
     except:
         print("[+] Error in URI format (expected HTTP / HTTPS)")
